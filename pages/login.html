@@ -31,13 +31,20 @@
       }
     </style>
   </head>
+  <script src="../js/login.js"></script>
+  <script src="js/auth.js"></script>
+
   <body class="bg-slate-100 h-full">
     <div class="flex items-center justify-center h-full">
       <div>
         <h1 class="text-center text-5xl font-bold mb-10">Login</h1>
         <form id="form" class="flex flex-col gap-4 w-sm">
           <div>
-            <label for="username" class="block mb-2 text-sm font-medium text-gray-900">Foydalanuvchi nomi*</label>
+            <label
+              for="username"
+              class="block mb-2 text-sm font-medium text-gray-900"
+              >Foydalanuvchi nomi*</label
+            >
             <input
               placeholder="Foydalanuvchi nomini yoki emailni kiriting.."
               type="text"
@@ -48,7 +55,11 @@
             />
           </div>
           <div>
-            <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Maxfiy so'z*</label>
+            <label
+              for="password"
+              class="block mb-2 text-sm font-medium text-gray-900"
+              >Maxfiy so'z*</label
+            >
             <input
               placeholder="Maxfiy so'zni kiriting"
               type="password"
@@ -60,7 +71,7 @@
           </div>
           <button
             type="submit"
-            class="flex items-center justify-center gap-2 text-white bg-black hover:bg-black/90 focus:ring-4 focus:outline-none focus:ring-black/50 font-medium rounded-lg text-sm px-5 py-2.5 cursor-pointer"
+            class="flex items-center justify-center gap-2 text-black bg-black hover:bg-black/90 focus:ring-4 focus:outline-none focus:ring-black/50 font-medium rounded-lg text-sm px-5 py-2.5 cursor-pointer"
           >
             <svg
               aria-hidden="true"
@@ -75,7 +86,7 @@
                 fill="currentColor"
               />
               <path
-                d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539..."
+                d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539"
                 fill="currentFill"
               />
             </svg>
@@ -84,13 +95,19 @@
         </form>
 
         <!-- Toastlar -->
-        <div id="toast-success" class="noShow text-green-600 mt-4 toast">✅ <span id="succesText"></span></div>
-        <div id="toast-warning" class="noShow text-yellow-600 mt-4 toast">⚠️ <span id="warningText"></span></div>
-        <div id="toast-danger" class="noShow text-red-600 mt-4 toast">❌ <span id="dangerText"></span></div>
+        <div id="toast-success" class="noShow text-green-600 mt-4 toast">
+          ✅ <span id="succesText"></span>
+        </div>
+        <div id="toast-warning" class="noShow text-yellow-600 mt-4 toast">
+          ⚠️ <span id="warningText"></span>
+        </div>
+        <div id="toast-danger" class="noShow text-red-600 mt-4 toast">
+          ❌ <span id="dangerText"></span>
+        </div>
       </div>
     </div>
 
     <script src="../node_modules/flowbite/dist/flowbite.min.js"></script>
-    <script type="module" src="../js/login.js"></script>
+    <script type="module" src="../js/protected.js"></script>
   </body>
 </html>

@@ -1,5 +1,3 @@
- import {protectRoute} from "./protected"
+import { protect } from "./protected";
 
- protectRoute()
-
-
+protectRoute();
