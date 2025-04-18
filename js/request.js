@@ -1,28 +1,49 @@
-// request.js
-export async function login(data) {
-    try {
-      const res = await fetch("https://json-api.uz/api/project/fn37/auth/login", {
+export async function login(user) {
+  try {
+    const req = await fetch("https://json-api.uz/api/project/fn37/auth/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(user),
+    });
+
+    const res = await req.json();
+
+    if (req.status === 200) {
+      return res;
+    } else {
+      throw new Error(res.message || "Login failed: Invalid credentials");
+    }
+  } catch (err) {
+    throw err;
+  }
+}
+
+export async function register(user) {
+  try {
+    console.log("Sending register request:", user);
+    const req = await fetch(
+      "https://json-api.uz/api/project/fn37/auth/register",
+      {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Bearer YOUR_API_TOKEN", // Tokenni qo‘shing
         },
-        body: JSON.stringify(data),
-      });
-  
-      if (!res.ok) {
-        const errorData = await res.json().catch(() => ({}));
-        throw new Error(
-          errorData.message || `Login failed with status: ${res.status}`
-        );
+        body: JSON.stringify(user),
       }
-  
-      const result = await res.json();
-      if (!result || typeof result !== "object") {
-        throw new Error("Invalid response from server");
-      }
-      return result;
-    } catch (err) {
-      throw new Error(err.message || "Network error occurred");
+    );
+
+    const res = await req.json();
+
+    if (req.status === 200) {
+      return res;
+    } else {
+      throw new Error(
+        res.message || "Registration failed: User already exists"
+      );
     }
+  } catch (err) {
+    throw err;
   }
+}

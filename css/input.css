@@ -1,2 +1,12 @@
 @import "tailwindcss";
-@plugin "daisyui";
+@import "flowbite/src/themes/default";
+@plugin "flowbite/plugin";
+@source "../node_modules/flowbite";
+
+.noShow {
+    @apply hidden;
+}
+
+.login-form[data-state="pending"]>button>svg {
+    @apply inline-block
+}

@@ -1,20 +1,22 @@
-// utils.js
-
-export const validator = (formData) => {
-    if (!formData.username || formData.username.trim() === "") {
-      return {
-        target: "username",
-        message: "Foydalanuvchi nomi kiritilmadi",
-      };
+export function validator(obj) {
+    if (obj.username.trim() === "") {
+        return {
+            target: "username",
+            message: "Username is required",
+        };
     }
-  
-    if (!formData.password || formData.password.trim() === "") {
-      return {
-        target: "password",
-        message: "Parol kiritilmadi",
-      };
+    if (obj.password.trim() === "") {
+        return {
+            target: "password",
+            message: "Password is required",
+        };
     }
 
-  
-    return null; // No validation errors
-  };
+    if (obj.confirm_password && obj.password !== obj.confirm_password) {
+        return {
+            target: "confirm_password",
+            message: "Passwords do not match",
+        };
+    }
+    return false;
+}

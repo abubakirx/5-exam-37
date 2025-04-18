@@ -1,17 +1,35 @@
-<script>
-  document.getElementById("carForm").addEventListener("submit", function (e) {
-    e.preventDefault(); // Formani submit qilishni to'xtatadi
+// add.js
+document.addEventListener("DOMContentLoaded", () => {
+  if (!localStorage.getItem("token")) {
+    window.location.href = "../index.html";
+  }
 
-    const carName = document.getElementById("carName").value;
-    const dailyPrice = document.getElementById("dailyPrice").value;
-    const buyPrice = document.getElementById("buyPrice").value;
-    const dateTime = document.getElementById("dateTime").value;
+  const form = document.getElementById("carForm");
+  const resetBtn = document.getElementById("resetBtn");
 
-    console.log("Mashina nomi:", carName);
-    console.log("1 kunlik narxi:", dailyPrice);
-    console.log("Sotib olish narxi:", buyPrice);
-    console.log("Vaqt va sana:", dateTime);
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
 
-    // Bu yerda qiymatlarni serverga yuborish yoki boshqa ishlarni qilishingiz mumkin
+    const name = document.getElementById("name").value.trim();
+    const image = document.getElementById("image").value.trim();
+    const description = document.getElementById("description").value.trim();
+
+    if (!name || !image || !description) {
+      alert("Iltimos, barcha maydonlarni to‘ldiring!");
+      return;
+    }
+
+    const car = { name, image, description };
+
+    const cars = JSON.parse(localStorage.getItem("cars")) || [];
+    cars.push(car);
+    localStorage.setItem("cars", JSON.stringify(cars));
+
+    alert("Mashina muvaffaqiyatli qo‘shildi!");
+    window.location.href = "main.html";
   });
-</script>
+
+  resetBtn.addEventListener("click", () => {
+    form.reset();
+  });
+});
